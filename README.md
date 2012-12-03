@@ -1,4 +1,4 @@
-git add# README
+# README
 Парное программирование, эксперимент
 
 Happy coding!
