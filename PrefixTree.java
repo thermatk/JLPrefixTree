@@ -19,8 +19,8 @@ public class PrefixTree {
 			right.preorder(encoding + "1");
 			
 		} else {
-			System.out.print(character + " ");
-			System.out.println(encoding);
+            //TODO: max format numbers
+    		System.out.printf("%16s%16d%16s\n",character,encoding.length(),encoding);
 		}
 
 	}
