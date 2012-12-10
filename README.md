@@ -1,4 +1,5 @@
-# README
+# README #
 Парное программирование, эксперимент
 
-Happy coding!
+*TheRmATK & remkwadriga @ NES BAE 2012*
+## Happy coding! ##
