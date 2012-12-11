@@ -66,9 +66,6 @@ public class PrefixTree {
 		tree.preorder("");
 		//
 		// System.out.println("back to main");
-
-		// !TEST
-		CharStdIn.readChar();
 		
 		while (!CharStdIn.isEmpty()) {
 			tree.uncompress();
