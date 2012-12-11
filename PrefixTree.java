@@ -37,25 +37,16 @@ public class PrefixTree {
 
 	public void uncompress() {
 		if (isEnding()) {
-			// ending
-			// System.out.println("ending");
 			System.out.print(Character.toString(character));
-			// back to root:
 			return;
 		}
 		if (!CharStdIn.isEmpty()) {
 			char currentChar = CharStdIn.readChar();
 
 			if (currentChar == '0') {
-				// System.out.println("left");
 				left.uncompress();
-				//
-
 			} else if (currentChar == '1') {
-				//
-				// System.out.println("right");
 				right.uncompress();
-
 			}
 
 		}
@@ -64,12 +55,9 @@ public class PrefixTree {
 	public static void main(String[] args) {
 		PrefixTree tree = new PrefixTree();
 		tree.preorder("");
-		//
-		// System.out.println("back to main");
-		
+        // TODO: output, fixes&cleanup, readme		
 		while (!CharStdIn.isEmpty()) {
 			tree.uncompress();
 		}
-		// TEST!
 	}
 }
