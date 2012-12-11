@@ -55,7 +55,7 @@ public class PrefixTree {
 	public static void main(String[] args) {
 		PrefixTree tree = new PrefixTree();
 		tree.preorder("");
-        // TODO: output, fixes&cleanup, readme		
+        // TODO: output, fixes&cleanup, comments!, readme		
 		while (!CharStdIn.isEmpty()) {
 			tree.uncompress();
 		}
