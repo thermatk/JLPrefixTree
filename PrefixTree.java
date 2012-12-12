@@ -22,13 +22,13 @@ public class PrefixTree {
 
 		} else {
 			// TODO: max format numbers
-			System.out.printf("%16s%16d%16s\n", character, encoding.length(),
+			System.out.printf("%s	%d	%s\n", character, encoding.length(),
 					encoding);
 		}
 
 	}
 
-	public boolean isEnding() {
+	private boolean isEnding() {
 		if (character == '*') {
 			return false;
 		}
@@ -51,11 +51,18 @@ public class PrefixTree {
 
 		}
 	}
+	
+	public static void outputTable(PrefixTree tree) {
+		System.out.println("char	bits	encoding");
+		tree.preorder("");
+		System.out.println();
+	}
 
 	public static void main(String[] args) {
 		PrefixTree tree = new PrefixTree();
-		tree.preorder("");
-        // TODO: output, fixes&cleanup, comments!, readme		
+		
+		outputTable(tree);
+		// TODO: output, fixes&cleanup, comments!, readme
 		while (!CharStdIn.isEmpty()) {
 			tree.uncompress();
 		}
