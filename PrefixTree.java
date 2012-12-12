@@ -3,6 +3,11 @@ public class PrefixTree {
     private char character;
 	private PrefixTree left;
 	private PrefixTree right;
+	
+	private static int numBits;
+	private static int numChars;
+	
+	private static boolean uncompressed = false;
 
 	public PrefixTree() {
 		character = CharStdIn.readChar();
@@ -10,7 +15,6 @@ public class PrefixTree {
 			if (character == '*') {
 				left = new PrefixTree();
 				right = new PrefixTree();
-			} else {
 			}
 		}
 	}
@@ -35,20 +39,25 @@ public class PrefixTree {
 		return true;
 	}
 
-	public void uncompress() {
+	private void uncompress() {
 		if (isEnding()) {
 			System.out.print(Character.toString(character));
+			numChars++;
 			return;
+			
 		}
 		if (!CharStdIn.isEmpty()) {
 			char currentChar = CharStdIn.readChar();
-
+			
 			if (currentChar == '0') {
+				numBits++;
 				left.uncompress();
 			} else if (currentChar == '1') {
+				numBits++;
 				right.uncompress();
+			} else if (numBits != 0) {
+				uncompressed = true;
 			}
-
 		}
 	}
 	
@@ -57,14 +66,27 @@ public class PrefixTree {
 		tree.preorder("");
 		System.out.println();
 	}
+	
+	public static void outputUncompress(PrefixTree tree) {
+		while (!uncompressed && !CharStdIn.isEmpty()) {
+			tree.uncompress();
+		}
+	}
+	
+	public static void outputStatistics() {
+		System.out.println();
+		System.out.println("Number of bits		 = " + numBits);
+		System.out.println("Number of characters = " + numChars);
+		double compression = (numBits / (double) (numChars * 8)) * 100;
+		System.out.println("Compression ratio	 = " + compression);
+	}
 
 	public static void main(String[] args) {
 		PrefixTree tree = new PrefixTree();
 		
 		outputTable(tree);
 		// TODO: output, fixes&cleanup, comments!, readme
-		while (!CharStdIn.isEmpty()) {
-			tree.uncompress();
-		}
+		outputUncompress(tree);
+		outputStatistics();		
 	}
 }
