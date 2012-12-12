@@ -15,7 +15,7 @@ public class PrefixTree {
 		}
 	}
 
-	public void preorder(String encoding) {
+	private void preorder(String encoding) {
 		if (character == '*') {
 			left.preorder(encoding + "0");
 			right.preorder(encoding + "1");
